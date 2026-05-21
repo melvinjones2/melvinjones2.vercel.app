@@ -1,10 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Mel from "../public/dog-butterfly-4102437754.gif";
+import { Experience } from "@/pages/api/typings";
+import { urlFor } from "@/sanity";
 
-type Props = {};
+type Props = {
+  experience: Experience;
+};
 
-export default function ExperienceCard({}: Props) {
+export default function ExperienceCard({ experience }: Props) {
   return (
     <article className="flex flex-col rounded-lg items-center space-y-0 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-50 cursor-pointer transition-opacity duration-200 overflow-hidden">
       <motion.img
@@ -15,35 +18,36 @@ export default function ExperienceCard({}: Props) {
         transition={{ duration: 1.2 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="w-32 h-32 rounded-full xl:w-[200px] xl:h-[200px] object-cover object-center"
-        src={Mel.src}
+        className="w-24 h-24 rounded-full xl:w-[200px] xl:h-[200px] object-contain object-center"
+        src={urlFor(experience?.companyImage).url()}
         alt=""
       />
 
-      <div className="px-0 md:px-10">
-        <h4 className="text-4xl font-light">CEO of The Company</h4>
+      <div className="px-1 md:px-10">
+        <h4 className="text-4xl font-light">{experience?.jobTitle}</h4>
         <p className="font-bold text-2xl mt-1">
-          Managed a team of ...
+          {experience?.company}
         </p>
         <div className="flex space-x-2 my-2">
           {/* Change each img tag to Image later for better performance*/}
-          <img className="h-10 w-10 rounded-full" src={Mel.src} alt="" />
-          {/* Tech Used (Stacks)*/}
-          <img className="h-10 w-10 rounded-full" src={Mel.src} alt="" />
-          {/* Tech Used (Stacks)*/}
-          <img className="h-10 w-10 rounded-full" src={Mel.src} alt="" />
-          {/* Tech Used (Stacks)*/}
+          {experience.technologies.map(technology => (
+            <img
+              key={technology._id}
+              className="h-12 w-12 rounded-full"
+              src={urlFor(technology.image).url()}
+              alt=""
+            />
+          ))}
         </div>
-        <p className="uppercase py-5 text-gray-500">
-          Started work... - Ended...
+        <p className="uppercase py-1 text-gray-500 my-1">
+          {new Date(experience.dateStarted).toDateString()} - {" "}
+          {experience.dateEnded ? new Date(experience.dateEnded).toDateString() : "Present"}
         </p>
 
-        <ul className="list-disc space-y-4 ml-5 text-lg ">
-          <li>Summary points</li>
-          <li>Summary points</li>
-          <li>Summary points</li>
-          <li>Summary points</li>
-          <li>Summary points</li>
+        <ul className="px-5 md:px-10 list-disc space-y-1 pr-5 text-justify ml-0 text-sm md:text-lg pl-5 max-h-45 overflow-y-scroll scrollbar-thin scrollbar-track-gray scrollbar-thumb-[#0a2af7]/80 break-words">
+          {experience.points.map((point, i) => (
+            <li key={i}>{point}</li>
+          ))}
         </ul>
       </div>
     </article>

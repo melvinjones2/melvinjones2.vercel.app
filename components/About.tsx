@@ -1,11 +1,12 @@
 import React from 'react'
 import { motion } from 'framer-motion';
-import Image from "next/image";
-import aboutPic from "../public/dog-butterfly-4102437754.gif";
+import { urlFor } from '@/sanity';
 
-type Props = {}
+type Props = {
+  pageInfo: any; // Replace 'any' with the actual type for pageInfo
+};
 
-export default function About({}: Props) {
+export default function About({ pageInfo }: Props) {
   return (
     <motion.div
         initial={{ opacity: 0, }}
@@ -27,8 +28,8 @@ export default function About({}: Props) {
         }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        src={aboutPic.src}
-        className="-mb-24 md:mb-0 flex-shrink-0 w-52 h-52 rounded-full object-cover md:rounded-lg md:w-64 md:h-95 xl:w-[500px] xl:h-[600px]"
+        src={urlFor(pageInfo?.profilePic).url()}
+        className="-mb-24 md:mb-0 flex-shrink-0 w-52 h-52 rounded-full object-cover md:rounded-lg md:w-70 md:h-100 xl:w-[400px] xl:h-[500px]"
       />
 
       <div className="space-y-5 px-0 md:px-10 font-semibold">
@@ -38,18 +39,7 @@ export default function About({}: Props) {
             background
         </h4>
         <p className="text-base">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-            voluptate, doloremque, dolores, dolorum doloremque dolores dolorum
-            doloremque dolores dolorum doloremque dolores dolorum doloremque
-            dolores dolorum doloremque dolores dolorum doloremque dolores
-            dolorum doloremque dolores dolorum doloremque dolores dolorum
-            doloremque dolores dolorum doloremque dolores dolorum doloremque
-            dolores dolorum doloremque dolores dolorum doloremque dolores
-            dolorum doloremque dolores dolorum doloremque dolores dolorum
-            doloremque dolores dolorum doloremque dolores dolorum doloremque
-            dolores dolorum doloremque dolores dolorum doloremque dolores
-            dolorum doloremque dolores dolorum doloremque dolores dolorum
-            doloremque dolores dolorum doloremque dolores dolorum.
+            {pageInfo?.backgroundInformation}
         </p>
       </div>
     </motion.div>

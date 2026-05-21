@@ -28,7 +28,7 @@ const Home = ({pageInfo, experiences, skills, projects, socials}: Props) => {
   return (
     <div
       className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory 
-    overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80"
+    overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80"
     >
       <Head>
         <title>Mel's Portfolio</title>
@@ -39,7 +39,7 @@ const Home = ({pageInfo, experiences, skills, projects, socials}: Props) => {
 
       {/* Hero Section */}
       <section id="hero" className="snap-start">
-        <Hero />
+        <Hero pageInfo={pageInfo} />
       </section>
 
       {/* About */}

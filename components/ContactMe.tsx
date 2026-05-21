@@ -27,7 +27,7 @@ function ContactMe({}: Props) {
       <div className="flex flex-col space-y-10">
         <h4 className="text-4xl font-semibold text-center">
           I have got what you need.{" "}
-          <span className="decoration-[#F7AB0A]/50 underline">
+          <span className="decoration-[#0a2af7]/50 underline">
             {" "}
             Let's Communicate.
           </span>
@@ -36,17 +36,17 @@ function ContactMe({}: Props) {
         <div>
           {/* Phone */}
           <div className="flex items-center space-x-5 justify-center">
-            <PhoneIcon className="text-[#F7AB0A] h-7 w-7 animate-pulse" />
+            <PhoneIcon className="text-[#0a2af7] h-7 w-7 animate-pulse" />
             <p className="text-2xl">405-473-9999</p>
           </div>
           {/* Email */}
           <div className="flex items-center space-x-5 justify-center">
-            <EnvelopeIcon className="text-[#F7AB0A] h-7 w-7 animate-pulse" />
+            <EnvelopeIcon className="text-[#0a2af7] h-7 w-7 animate-pulse" />
             <p className="text-2xl">melvindjones400@gmail.com</p>
           </div>
           {/* Map Pin */}
           <div className="flex items-center space-x-5 justify-center">
-            <MapPinIcon className="text-[#F7AB0A] h-7 w-7 animate-pulse" />
+            <MapPinIcon className="text-[#0a2af7] h-7 w-7 animate-pulse" />
             <p className="text-2xl">Oklahoma City, OK</p>
           </div>
         </div>
@@ -85,7 +85,7 @@ function ContactMe({}: Props) {
           />
           <button
             type="submit"
-            className="bg-[#F7AB0A] py-5 px-10 rounded-md text-black font-bold text-lg hover:bg-[#F7AB0A]/80"
+            className="bg-[#0a2af7] py-5 px-10 rounded-md text-black font-bold text-lg hover:bg-[#0a2af7]/80"
           >
             Submit
           </button>

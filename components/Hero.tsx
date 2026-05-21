@@ -3,18 +3,20 @@ import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
 import Link from "next/link";
 import Image from "next/image";
-import Mel from "../public/63fe07af6d1eb_animals-with-butterflies.jpg";
+import { PageInfo } from "@/pages/api/typings";
+import { urlFor } from "@/sanity";
 
+type Props = {
+  pageInfo: PageInfo
+};
 
-type Props = {};
-
-export default function Hero({}: Props) {
+export default function Hero({ pageInfo }: Props) {
   const [text] = useTypewriter({
     words: [
-      "Hi, I'm Mel",
-      "Welcome to My Portfolio!",
-      "I hope you enjoy your visit!",
-      ":)",
+      `Hi, I'm ${pageInfo.name}`,
+      `Welcome to My Portfolio!`,
+      `I hope you enjoy your visit!`,
+      `:)`,
     ],
     loop: true,
     delaySpeed: 1500,
@@ -23,16 +25,16 @@ export default function Hero({}: Props) {
   return (
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden">
       <BackgroundCircles />
-      <Image
-        className="relative rounded-full h-32 w-32 mx-auto object-cover"
-        src={Mel}
-        alt="Mel"
+      <img
+        className="relative rounded-full h-40 w-40 mx-auto object-cover"
+        src={urlFor(pageInfo?.heroImage).url()}
+        alt=""
         width={128}
         height={128}
       />
       <div className="z-10">
-        <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px]">
-          Software Monkey
+        <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[10px]">
+          {pageInfo?.role}
         </h2>
         <h1 className="text-5xl lg:text-6xl font-semibold px-10">
           <span className="mr-3">{text}</span>

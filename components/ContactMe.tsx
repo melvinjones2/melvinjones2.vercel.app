@@ -1,6 +1,9 @@
 import React from "react";
 import { PhoneIcon, MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { PageInfo } from "@/pages/api/typings";
+import { urlFor } from "@/sanity";
+
 
 type Inputs = {
   name: string;
@@ -9,9 +12,11 @@ type Inputs = {
   message: string;
 };
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-function ContactMe({}: Props) {
+function ContactMe({ pageInfo }: Props) {
   const { register, handleSubmit } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (formData) => {
@@ -24,7 +29,7 @@ function ContactMe({}: Props) {
         Contact
       </h3>
 
-      <div className="flex flex-col space-y-10">
+      <div className="flex flex-col space-y-5">
         <h4 className="text-4xl font-semibold text-center">
           I have got what you need.{" "}
           <span className="decoration-[#0a2af7]/50 underline">
@@ -35,19 +40,21 @@ function ContactMe({}: Props) {
 
         <div>
           {/* Phone */}
-          <div className="flex items-center space-x-5 justify-center">
+          <div className="flex items-center space-x-5 space-y-2 justify-center">
             <PhoneIcon className="text-[#0a2af7] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">405-473-9999</p>
+            <p className="text-2xl">
+              {pageInfo?.phoneNumber}
+            </p>
           </div>
           {/* Email */}
-          <div className="flex items-center space-x-5 justify-center">
+          <div className="flex items-center space-x-5 space-y-2 justify-center">
             <EnvelopeIcon className="text-[#0a2af7] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">melvindjones400@gmail.com</p>
+            <p className="text-2xl">{pageInfo?.email}</p>
           </div>
           {/* Map Pin */}
-          <div className="flex items-center space-x-5 justify-center">
+          <div className="flex items-center space-x-5 space-y-2 justify-center">
             <MapPinIcon className="text-[#0a2af7] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">Oklahoma City, OK</p>
+            <p className="text-2xl">{pageInfo?.address}</p>
           </div>
         </div>
 

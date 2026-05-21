@@ -2,7 +2,6 @@ import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
 import Link from "next/link";
-import Image from "next/image";
 import { PageInfo } from "@/pages/api/typings";
 import { urlFor } from "@/sanity";
 

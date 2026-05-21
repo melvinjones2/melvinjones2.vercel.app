@@ -14,6 +14,7 @@ import { fetchSkills } from "@/utils/fetchSkills";
 import { fetchSocial } from "@/utils/fetchSocials";
 import { fetchExperiences } from "@/utils/fetchExperiences";
 import { fetchPageInfo } from "@/utils/fetchPageInfo";
+import { HomeIcon } from "@heroicons/react/24/outline";
 
 type Props = {
   pageInfo: PageInfo;
@@ -21,10 +22,10 @@ type Props = {
   skills: Skill[];
   projects: Project[];
   socials: Social[];
-};  
+};
 
 // Use the NextPage type for the Home component
-const Home = ({pageInfo, experiences, skills, projects, socials}: Props) => {
+const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
   return (
     <div
       className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory 
@@ -48,43 +49,43 @@ const Home = ({pageInfo, experiences, skills, projects, socials}: Props) => {
       </section>
 
       {/* Experience */}
-      { <section id="experience" className="snap-center">
+      {<section id="experience" className="snap-center">
         <WorkExperience experiences={experiences} />
-      </section> }
+      </section>}
 
       {/* Skills */}
       <section id="skills" className="snap-start">
-        <Skills skills={skills}/>
+        <Skills skills={skills} />
       </section>
 
       {/* Projects */}
       <section id="projects" className="snap-start">
-        <Projects />
+        <Projects projects={projects} />
       </section>
 
       {/* Contact Me */}
       <section id="contact" className="snap-start">
-        <ContactMe />
+        <ContactMe pageInfo={pageInfo} />
       </section>
 
-      <Link href="#hero">
-        <footer className="sticky bottom-5 w-full cursor-pointer">
-          <div className="flex items-center justify-center">
-            <img
-              className="h-10 w-10 rounded-full filter grayscale hover:grayscale-0 cursor-pointer"
-              src="HomeIcon"
-              alt=""
-            />
-          </div>
-        </footer>
-      </Link>
+      <footer className="sticky bottom-4 w-full">
+        <div className="flex items-center justify-center">
+          <Link href="#hero">
+            <footer className="sticky bottom-5 w-full cursor-pointer">
+              <div className="flex items-center justify-center">
+              <HomeIcon className="h-10 w-10 pb-0.2 hover:grayscale-100 text-white" />
+              </div>
+            </footer>
+          </Link>
+        </div>
+      </footer>
     </div>
   );
 };
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<Props> = async () => { 
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const pageInfo: PageInfo = await fetchPageInfo();
   const experiences: Experience[] = await fetchExperiences();
   const skills: Skill[] = await fetchSkills();
@@ -102,6 +103,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 300 seconds
-    revalidate: 300, 
+    revalidate: 300,
   };
 }

@@ -12,13 +12,13 @@ type Props = {
 export default function Hero({ pageInfo }: Props) {
   const [text] = useTypewriter({
     words: [
-      `Hi, I'm ${pageInfo.name}`,
+      `Hi, I'm ${pageInfo.name}.`,
       `Welcome to My Portfolio!`,
-      `I hope you enjoy your visit!`,
+      `I hope you enjoy your visit.`,
       `:)`,
     ],
     loop: true,
-    delaySpeed: 1500,
+    delaySpeed: 3000,
   });
 
   return (
@@ -31,28 +31,28 @@ export default function Hero({ pageInfo }: Props) {
         width={128}
         height={128}
       />
-      <div className="z-10">
-        <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[10px]">
+      <div className="z-20">
+        <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[10px] md:tracking-[15px]">
           {pageInfo?.role}
         </h2>
         <h1 className="text-5xl lg:text-6xl font-semibold px-10">
           <span className="mr-3">{text}</span>
           <Cursor cursorColor="#0a2af7" />
         </h1>
-      </div>
-      <div className="pt-5">
-        <Link href="#about">
-          <button className="heroButton">About</button>
-        </Link>
-        <Link href="#experience">
-          <button className="heroButton">Experience</button>
-        </Link>
-        <Link href="#Skills">
-          <button className="heroButton">Skills</button>
-        </Link>
-        <Link href="#projects">
-          <button className="heroButton">Projects</button>
-        </Link>
+        <div className="pt-5">
+          <Link href="#about">
+            <button className="heroButton">About</button>
+          </Link>
+          <Link href="#experience">
+            <button className="heroButton">Experience</button>
+          </Link>
+          <Link href="#skills">
+            <button className="heroButton">Skills</button>
+          </Link>
+          <Link href="#projects">
+            <button className="heroButton">Projects</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

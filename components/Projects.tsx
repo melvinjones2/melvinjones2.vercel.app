@@ -20,15 +20,16 @@ function Projects({ projects }: Props) {
         Projects
       </h3>
 
-      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-3 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80">
+      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-3 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 scrollbar-thumb-rounded">
         {projects?.map((project, i) => (
-          <div key={i} className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen">
+          <div key={i} 
+          className="w-screen flex-shrink-0 snap-center flex flex-col space-y-3 items-center justify-center p-10 h-screen pt-15">
             <motion.img
               initial={{
                 y: -300,
                 opacity: 0,
               }}
-              className="max-h-60 md:max-h-8 xl:max-h-80 object-contain"
+              className="max-h-50 xs:max-h-40 sm:max-h-60 md:max-h-65 lg:max-h-70 xl:max-h-75 object-contain object-center"
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -36,17 +37,17 @@ function Projects({ projects }: Props) {
               alt=""
               
             />
-            <div className="space-y-3 px-2 md:px-0 max-w-6xl">
-              <h4 className="text-4xl font-semibold text-center">
-                <span className="underline decoration-[#0a2af7]/50">
-                  Projects {i + 1} of {projects.length}:
+            <div className="space-y-4 px-2 max-w-6xl max-w-6xl ">
+              <h4 className="text-3xl font-semibold text-center xs:text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl">
+                <span className="underline decoration-[#FFFF]/50">
+                  Project {i + 1} of {projects.length}:
                 </span>{" "}
                 {project?.title}
               </h4>
 
               <div className="flex items-center space-x-2 justify-center">
                 {project?.technologies.map((technology: Technology) => (
-                  <img className="h-15 w-15"
+                  <img className="max-h-8  md:max-h-10 xl:max-h-12 object-contain"
                     key={technology._id}
                     src={urlFor(technology.image).url()}
                     alt=""
@@ -54,7 +55,7 @@ function Projects({ projects }: Props) {
                 ))}
               </div>
 
-              <p className="text-lg text-center md:text-left">
+              <p className="text-lg text-center max-h-55 overflow-y-scroll scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 break-words">
                 {project?.summary}
               </p>
             </div>

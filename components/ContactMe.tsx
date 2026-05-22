@@ -52,8 +52,8 @@ function ContactMe({ pageInfo }: Props) {
             <p className="text-2xl">{pageInfo?.email}</p>
           </div>
           {/* Map Pin */}
-          <div className="flex items-center space-x-5 space-y-2 justify-center">
-            <MapPinIcon className="text-[#0a2af7] h-7 w-7 animate-pulse" />
+          <div className="flex items-center space-x-5 space-y-5 justify-center">
+            <MapPinIcon className="text-[#0a2af7] h-10 w-7 animate-pulse" />
             <p className="text-2xl">{pageInfo?.address}</p>
           </div>
         </div>

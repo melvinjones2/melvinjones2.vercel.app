@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import SkillBubbles from "./SkillBubbles";
 import { Skill as SkillType } from "@/pages/api/typings";
-import skill from "@/sanity/schemaTypes/skill";
 
 type Props = {
   skills: SkillType[];
@@ -21,16 +20,16 @@ function Skills({ skills }: Props) {
         Skills
       </h3>
 
-      <h3 className="absolute top-28 uppercase tracking-[3px] text-gray-500 text-sm">
+      <h3 className="absolute top-25 uppercase tracking-[3px] text-gray-500 text-sm">
         Hover over a skill for current proficiency
       </h3>
 
-      <div className="grid grid-cols-4 gap-3 strict mt-17">
-        {skills?.slice(0, skills.length / 2).map(skill => (
+      <div className="grid grid-cols-4 gap-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
+        {skills?.slice(0, skills.length / 2).map((skill) => (
           <SkillBubbles key={skill._id} skill={skill} />
         ))}
 
-        {skills?.slice( skills.length / 2, skills.length ).map(skill => (
+        {skills?.slice( skills.length / 2, skills.length ).map((skill) => (
           <SkillBubbles key={skill._id} skill={skill} directionLeft />
         ))}
       </div>

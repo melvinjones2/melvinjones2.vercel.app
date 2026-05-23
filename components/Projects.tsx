@@ -22,7 +22,7 @@ function Projects({ projects }: Props) {
 
       <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x z-3 snap-mandatory scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80">
         {projects?.map((project, i) => (
-          <div key={i} 
+          <div key={project._id} 
           className="w-screen flex-shrink-0 snap-center flex flex-col space-y-2 items-center justify-center p-10 h-screen pt-15">
             <motion.img
               initial={{

@@ -18,7 +18,7 @@ export default function ExperienceCard({ experience }: Props) {
         transition={{ duration: 1.2 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="w-24 h-24 rounded-full xl:w-[170px] xl:h-[170px] object-contain object-center"
+        className="w-24 h-24 rounded-full xl:w-[170px] xl:h-[170px] object-contain object-center overflow-hidden object-center" // add object-cover so all images are even in size once more experience is obtained
         src={urlFor(experience?.companyImage).url()}
         alt=""
       />

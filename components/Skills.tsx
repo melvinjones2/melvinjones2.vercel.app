@@ -24,7 +24,7 @@ function Skills({ skills }: Props) {
         Hover over a skill for current proficiency
       </h3>
 
-      <div className="grid grid-cols-4 gap-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
+      <div className="grid grid-cols-4 gap-4 mt-15">
         {skills?.slice(0, skills.length / 2).map((skill) => (
           <SkillBubbles key={skill._id} skill={skill} />
         ))}

@@ -20,10 +20,10 @@ function Projects({ projects }: Props) {
         Projects
       </h3>
 
-      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-3 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 scrollbar-thumb-rounded">
+      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x z-3 snap-mandatory scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80">
         {projects?.map((project, i) => (
           <div key={i} 
-          className="w-screen flex-shrink-0 snap-center flex flex-col space-y-3 items-center justify-center p-10 h-screen pt-15">
+          className="w-screen flex-shrink-0 snap-center flex flex-col space-y-2 items-center justify-center p-10 h-screen pt-15">
             <motion.img
               initial={{
                 y: -300,

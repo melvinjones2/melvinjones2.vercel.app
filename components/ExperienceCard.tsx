@@ -9,7 +9,7 @@ type Props = {
 
 export default function ExperienceCard({ experience }: Props) {
   return (
-    <article className="flex flex-col rounded-lg items-center space-y-0 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-50 cursor-pointer transition-opacity duration-200 overflow-hidden">
+    <article className="flex flex-col rounded-lg items-center space-y-0 flex-shrink-0 w-[500px] h-[550px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-50 cursor-pointer transition-opacity duration-200 overflow-hidden mt-15">
       <motion.img
         initial={{
           y: -100,
@@ -30,22 +30,22 @@ export default function ExperienceCard({ experience }: Props) {
         </p>
         <div className="flex space-x-2 my-2">
           {/* Change each img tag to Image later for better performance*/}
-          {experience.technologies.map(technology => (
+          {experience?.technologies.map(technology => (
             <img
               key={technology._id}
               className="h-12 w-12 rounded-full"
-              src={urlFor(technology.image).url()}
+              src={urlFor(technology?.image).url()}
               alt=""
             />
           ))}
         </div>
         <p className="uppercase py-1 text-gray-500 my-1">
-          {new Date(experience.dateStarted).toDateString()} - {" "}
-          {experience.dateEnded ? new Date(experience.dateEnded).toDateString() : "Present"}
+          {experience?.dateStarted ? new Date(experience.dateStarted).toDateString() : ""} - {" "}
+          {experience?.dateEnded ? new Date(experience.dateEnded).toDateString() : "Present"}
         </p>
 
         <ul className="px-5 md:px-10 list-disc space-y-1 pr-5 text-justify ml-0 text-sm md:text-lg pl-5 max-h-45 overflow-y-scroll scrollbar-thin scrollbar-track-gray scrollbar-thumb-[#0a2af7]/80 break-words">
-          {experience.points.map((point, i) => (
+          {experience?.points.map((point, i) => (
             <li key={i}>{point}</li>
           ))}
         </ul>

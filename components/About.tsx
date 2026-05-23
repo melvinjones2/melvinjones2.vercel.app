@@ -29,7 +29,7 @@ export default function About({ pageInfo }: Props) {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         src={urlFor(pageInfo?.profilePic).url()}
-        className="-mb-24 md:mb-0 flex-shrink-0 w-52 h-52 rounded-full object-cover md:rounded-lg md:w-70 md:h-100 xl:w-[400px] xl:h-[500px]"
+        className="-mb-24 md:mb-0 flex-shrink-0 w-60 h-60 rounded-full object-cover md:rounded-lg md:w-64 md:h-95 xl:w-[400px] xl:h-[500px] justify-center"
       />
 
       <div className="space-y-5 px-0 md:px-10 font-semibold">
@@ -38,7 +38,7 @@ export default function About({ pageInfo }: Props) {
             <span className="underline decoration-[#0a2af7]/50">little</span>{" "}
             background
         </h4>
-        <p className="text-base">
+        <p className="text-sm md:text-lg lg:text-lg text-justify text-base">
             {pageInfo?.backgroundInformation}
         </p>
       </div>

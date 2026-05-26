@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Project } from "@/pages/api/typings";
+import { Project } from "@/typings";
 import { urlFor } from "@/sanity";
-import { Technology } from "@/pages/api/typings";
+import { Technology } from "@/typings";
 
 type Props = {
   projects: Project[];

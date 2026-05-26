@@ -1,7 +1,7 @@
 import React from "react";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
-import { Social } from "@/pages/api/typings";
+import { Social } from "@/typings";
 import social from "@/sanity/schemaTypes/social";
 
 type Props = {

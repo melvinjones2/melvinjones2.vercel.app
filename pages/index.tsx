@@ -8,13 +8,10 @@ import WorkExperience from "@/components/WorkExperience";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import ContactMe from "@/components/ContactMe";
-import { Experience, PageInfo, Project, Skill, Social } from "./api/typings";
-import { fetchProjects } from "@/utils/fetchProjects";
-import { fetchSkills } from "@/utils/fetchSkills";
-import { fetchSocial } from "@/utils/fetchSocials";
-import { fetchExperiences } from "@/utils/fetchExperiences";
-import { fetchPageInfo } from "@/utils/fetchPageInfo";
+import { Experience, PageInfo, Project, Skill, Social } from "../typings";
 import { HomeIcon } from "@heroicons/react/24/outline";
+import { sanityClient } from "../sanity"; 
+import { groq } from "next-sanity";
 
 type Props = {
   pageInfo: PageInfo;
@@ -54,9 +51,9 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
       </section>}
 
       {/* Skills */}
-      <section id="skills" className="snap-start">
+      {/* <section id="skills" className="snap-start">
         <Skills skills={skills} />
-      </section>
+      </section> */}
 
       {/* Projects */}
       <section id="projects" className="snap-start">
@@ -86,12 +83,27 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const pageInfo: PageInfo = await fetchPageInfo();
-  const experiences: Experience[] = await fetchExperiences();
-  const skills: Skill[] = await fetchSkills();
-  const projects: Project[] = await fetchProjects();
-  const socials: Social[] = await fetchSocial();
-
+  // Standard queries
+  const pageInfo: PageInfo = await sanityClient.fetch(groq`*[_type == "pageInfo"][0]`);
+  const skills: Skill[] = await sanityClient.fetch(groq`*[_type == "skill"]`);
+  const socials: Social[] = await sanityClient.fetch(groq`*[_type == "social"]`);
+  
+  // Expanded queries: Notice the { ..., technologies[]-> } 
+  // This pulls the actual image data for the nested arrays so the UI doesn't crash!
+  const experiences: Experience[] = await sanityClient.fetch(
+    groq`*[_type == "experience"] {
+      ...,
+      technologies[]->
+    }`
+  );
+  
+  const projects: Project[] = await sanityClient.fetch(
+    groq`*[_type == "project"] {
+      ...,
+      technologies[]->
+    }`
+  );
+    
   return {
     props: {
       pageInfo,
@@ -103,6 +115,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 10 seconds
-    revalidate: 10,
+    // revalidate: 10,
   };
 }

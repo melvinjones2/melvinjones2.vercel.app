@@ -12,7 +12,7 @@ export default function About({ pageInfo }: Props) {
         initial={{ opacity: 0, }}
         whileInView={{ opacity: 1, }}
         transition={{ duration: 1.5, }}
-        className="flex flex-col relative h-screen text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center"
+        className="flex flex-col relative sm:h-screen text-center md:text-left md:flex-row max-w-7xl px-5 xl:px-10 min-h-screen justify-center xl:space-y-0 mx-auto items-center"
     >
       <h3 className="absolute top-16 uppercase tracking-[20px] text-gray-500 text-2xl">
         About
@@ -29,17 +29,19 @@ export default function About({ pageInfo }: Props) {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         src={urlFor(pageInfo?.profilePic).url()}
-        className="-mb-24 md:mb-0 flex-shrink-0 w-60 h-60 rounded-full object-cover md:rounded-lg md:w-64 md:h-95 xl:w-[400px] xl:h-[500px] justify-center"
+        className="mt-7 space-y-5 sm:mt-0 mb-0 md:mb-0 flex-shrink-0 w-40 h-40 rounded-full object-cover md:rounded-lg md:mt-0 sm:w-60 sm:h-60 md:w-64 md:h-95 xl:w-[400px] xl:h-[600px] justify-center"
       />
 
-      <div className="space-y-5 px-0 md:px-10 font-semibold">
-        <h4 className="text-4xl font-semibold">
+      <div className="space-y-5 px-5 md:px-10 font-semibold">
+        <h4 className=" text-2xl md:text-4xl font-semibold">
             Here is a {""} 
             <span className="underline decoration-[#0a2af7]/50">little</span>{" "}
             background
         </h4>
-        <p className="text-sm md:text-lg lg:text-lg text-justify text-base">
-            {pageInfo?.backgroundInformation}
+        {/* Add if long description is required...
+        overflow-y-scroll scrollbar-hidden scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 */}
+        <p className="text-md md:text-lg lg:text-xl text-justify text-base tracking-tight md:tracking-normal max-h-65">
+            {pageInfo?.backgroundInformation} 
         </p>
       </div>
     </motion.div>

@@ -9,7 +9,7 @@ type Props = {
 
 export default function ExperienceCard({ experience }: Props) {
   return (
-    <article className="flex flex-col rounded-lg items-center space-y-0 flex-shrink-0 w-[500px] h-[550px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-50 cursor-pointer transition-opacity duration-200 overflow-hidden mt-15">
+    <article className="flex flex-col rounded-lg items-center space-y-0 flex-shrink-0 w-[400px] h-[465px] md:w-[600px] md:h-[550px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-50 cursor-pointer transition-opacity duration-200 overflow-hidden mt-10">
       <motion.img
         initial={{
           y: -100,
@@ -23,7 +23,7 @@ export default function ExperienceCard({ experience }: Props) {
         alt=""
       />
 
-      <div className="px-1 md:px-10">
+      <div className="px-0 md:px-10">
         <h4 className="text-4xl font-light">{experience?.jobTitle}</h4>
         <p className="font-bold text-2xl mt-1">
           {experience?.company}

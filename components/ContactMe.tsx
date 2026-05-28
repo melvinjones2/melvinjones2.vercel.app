@@ -29,7 +29,7 @@ function ContactMe({ pageInfo }: Props) {
     </h3>
 
       <div className="flex flex-col relative space-y-2 md:space-y-6 2xl:space-y-7">
-        <h4 className="mt-12 text-center text-3xl md:text-4xl lg:text-5xl font-semibold text-center">
+        <h4 className="mt-4 text-center text-3xl md:text-4xl lg:text-5xl font-semibold text-center">
           I've got what you need.{" "}
           <span className="decoration-[#0a2af7]/50 underline">
             {" "}
@@ -85,7 +85,7 @@ function ContactMe({ pageInfo }: Props) {
           <textarea
             {...register("message")}
             placeholder="Message"
-            className="contactInput"
+            className="contactInput h-30 md:h-25"
           />
           <button
             type="submit"

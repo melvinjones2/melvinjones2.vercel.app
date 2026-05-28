@@ -29,7 +29,7 @@ export default function About({ pageInfo }: Props) {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         src={urlFor(pageInfo?.profilePic).url()}
-        className="mt-7 space-y-5 sm:mt-0 mb-0 md:mb-0 flex-shrink-0 w-40 h-40 rounded-full object-cover md:rounded-lg md:mt-0 sm:w-60 sm:h-60 md:w-64 md:h-95 xl:w-[400px] xl:h-[600px] justify-center"
+        className="mt-7 space-y-5 sm:mt-0 mb-0 md:mb-0 flex-shrink-0 w-40 h-40 rounded-full object-cover md:rounded-lg md:mt-0 sm:w-60 sm:h-60 md:w-64 md:h-95 xl:w-[400px] xl:h-[550px] justify-center"
       />
 
       <div className="space-y-5 px-5 md:px-10 font-semibold">

@@ -65,7 +65,7 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
         <ContactMe pageInfo={pageInfo} />
       </section>
 
-      <footer className="sticky bottom-4 w-full">
+      <footer className="sticky bottom-3 w-full">
         <div className="flex items-center justify-center">
           <Link href="#hero">
             <footer className="sticky bottom-5 w-full cursor-pointer">

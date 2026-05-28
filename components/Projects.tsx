@@ -29,7 +29,7 @@ function Projects({ projects }: Props) {
                 y: -300,
                 opacity: 0,
               }}
-              className="max-h-30 sm:max-h-60 md:max-h-65 lg:max-h-70 xl:max-h-75 object-contain object-center"
+              className="max-h-30 sm:max-h-45 md:max-h-50 lg:max-h-60 object-contain object-center"
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -37,9 +37,9 @@ function Projects({ projects }: Props) {
               alt=""
               
             />
-            <div className="space-y-4 px-2 max-w-6xl max-w-6xl ">
-              <h4 className="font-semibold text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl">
-                <span className="underline decoration-[#FFFF]/50">
+            <div className="space-y-4 px-2 max-w-6xl">
+              <h4 className="font-semibold text-center text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl">
+                <span className="underline decoration-[#0a2af7]/50">
                   Project {i + 1} of {projects.length}:
                 </span>{" "}
                 {project?.title}
@@ -55,7 +55,7 @@ function Projects({ projects }: Props) {
                 ))}
               </div>
 
-              <p className="text-md sm:text-xl text-center overflow-y-scroll scrollbar-thin scrollbar-track-gray-400/0 scrollbar-thumb-[#0a2af7]/0 max-h-55 md:max-h-65 lg:max-h-70 xl:max-h-75">
+              <p className="text-md sm:text-xl text-center overflow-y-auto scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 max-h-55 md:max-h-65 lg:max-h-70 xl:max-h-75">
                 {project?.summary}
               </p>
             </div>

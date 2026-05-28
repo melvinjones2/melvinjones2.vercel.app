@@ -20,11 +20,11 @@ function Skills({ skills }: Props) {
         Skills
       </h3>
 
-      <h3 className="absolute top-25 md:top-30 uppercase tracking-[3px] text-gray-500 text-sm">
+      <h3 className="absolute top-25 md:top-25 uppercase tracking-[3px] text-gray-500 text-sm">
         Hover over a skill for current proficiency
       </h3>
 
-      <div className="grid grid-cols-4 gap-3 mt-22 md:gap-5 md:mt-15 justify-center">
+      <div className="grid grid-cols-4 gap-3 mt-15 md:gap-5 sm:mt-15 justify-center">
         {skills?.slice(0, skills.length / 2).map((skill) => (
           <SkillBubbles key={skill._id} skill={skill} />
         ))}

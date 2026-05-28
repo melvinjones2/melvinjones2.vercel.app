@@ -12,7 +12,7 @@ export default function About({ pageInfo }: Props) {
         initial={{ opacity: 0, }}
         whileInView={{ opacity: 1, }}
         transition={{ duration: 1.5, }}
-        className="flex flex-col relative sm:h-screen text-center md:text-left md:flex-row max-w-7xl md:px-5 xl:px-10 min-h-screen justify-center xl:space-y-0 mx-auto items-center"
+        className="flex flex-col relative h-screen text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center"
     >
       <h3 className="absolute top-16 uppercase tracking-[20px] text-gray-500 text-2xl">
         About
@@ -29,10 +29,10 @@ export default function About({ pageInfo }: Props) {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         src={urlFor(pageInfo?.profilePic).url()}
-        className="space-y-5 pb-0 md:pb-0 flex-shrink-0 w-40 h-40 rounded-full object-cover md:rounded-lg md:mt-0 sm:w-60 sm:h-60 md:w-64 md:h-95 xl:w-[400px] xl:h-[550px] justify-center"
+        className="-mb-16 md:mb-0 flex-shrink-0 w-52 h-52 rounded-full object-cover md:rounded-lg md:w-64 md:h-95 xl:w-[500px] xl:h-[600px]"
       />
 
-      <div className="space-y-2 md:space-y-3 px-5 md:px-10">
+      <div className="space-y-5 md:space-y-10 px-5 md:px-10">
         <h4 className="px-3 md:px-0 text-2xl md:text-4xl font-semibold">
             Here is a {""} 
             <span className="underline decoration-[#0a2af7]/50">little</span>{" "}
@@ -40,7 +40,7 @@ export default function About({ pageInfo }: Props) {
         </h4>
         {/* Add if long description is required...
         overflow-y-scroll scrollbar-hidden scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 */}
-        <p className="text-md px-5 md:px-0 md:text-lg lg:text-xl leading-snug text-base tracking-tight md:tracking-normal overflow-y-auto scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 max-h-70 sm:max-h-65 lg:max-h-70 xl:max-h-75">
+        <p className="text-md px-5 md:px-0 md:text-lg lg:text-xl leading-snug text-base tracking-tight md:tracking-normal overflow-y-auto scrollbar-thin scrollbar-track-gray-400/0 scrollbar-thumb-[#0a2af7]/80 max-h-70 sm:max-h-65 lg:max-h-70 xl:max-h-75">
             {pageInfo?.backgroundInformation} kjbwfe wef wefwef wef ewf ewf ewf wef wfe ewf ewf wef wfe wef wfe wef wef
         </p>
       </div>

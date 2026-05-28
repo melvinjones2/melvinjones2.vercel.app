@@ -28,8 +28,8 @@ function ContactMe({ pageInfo }: Props) {
       Contact
     </h3>
 
-      <div className="flex flex-col space-y-2 md:space-y-5 2xl:space-y-10">
-        <h4 className="mt-12 text-center text-2xl md:text-4xl lg:text-6xl font-semibold text-center">
+      <div className="flex flex-col space-y-2 md:space-y-6 2xl:space-y-7">
+        <h4 className="mt-12 text-center text-2xl md:text-4xl lg:text-5xl font-semibold text-center">
           
           <span className="decoration-[#0a2af7]/50 underline">
             {" "}
@@ -60,7 +60,7 @@ function ContactMe({ pageInfo }: Props) {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col space-y-2 w-80 md:w-fit mx-auto"
         >
-          <div className="space-y-2 sm:flex sm:space-x-2 sm:space-y-0">
+          <div className="space-y-2 md:flex md:space-x-2 md:space-y-0">
             <input
               {...register("name")}
               placeholder="Name"

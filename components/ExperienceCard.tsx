@@ -9,7 +9,7 @@ type Props = {
 
 export default function ExperienceCard({ experience }: Props) {
   return (
-    <article className="flex flex-col rounded-lg items-center space-y-0 flex-shrink-0 w-[320px] sm:w-[380px] h-[460px] md:w-[600px] md:h-[490px] xl:w-[900px] xl:h-[500px] snap-center bg-[#292929] p-5 sm:p-10 hover:opacity-100 opacity-50 cursor-pointer transition-opacity duration-200 overflow-hidden mt-10">
+    <article className="flex flex-col rounded-lg items-center space-y-0 flex-shrink-0 w-[320px] sm:w-[380px] h-[460px] md:w-[600px] md:h-[490px] xl:w-[900px] xl:h-[500px] snap-center bg-[#292929] p-5 sm:p-10 sm:hover:opacity-100 sm:opacity-50 cursor-pointer transition-opacity duration-200 overflow-hidden mt-10">
       <motion.img
         initial={{
           y: -100,
@@ -42,8 +42,8 @@ export default function ExperienceCard({ experience }: Props) {
           {experience?.dateStarted ? new Date(experience.dateStarted).toDateString() : ""} - {" "}
           {experience?.dateEnded ? new Date(experience.dateEnded).toDateString() : "Present"}
         </p>
-
-        <ul className="list-disc space-y-1 text-justify ml-5 text-sm md:text-lg">
+        {/* overflow-y-auto scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 max-h-55 md:max-h-65 lg:max-h-70 xl:max-h-75 */}
+        <ul className="list-disc space-y-1 ml-5 text-sm md:text-lg leading-snug">
           {experience?.points.map((point, i) => (
             <li key={i}>{point}</li>
           ))}

@@ -20,16 +20,16 @@ function Projects({ projects }: Props) {
         Projects
       </h3>
 
-      <div className="relative w-full flex overflow-x-auto overflow-y-hidden snap-x z-10 snap-mandatory scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80">
+      <div className="relative w-full flex overflow-x-auto overflow-y-hidden snap-x z-10 snap-mandatory scrollbar scrollbar-thin scrollbar-track-gray-400/0 scrollbar-thumb-[#0a2af7]/80">
         {projects?.map((project, i) => (
           <div key={project._id} 
-          className="w-screen flex-shrink-0 snap-center flex flex-col space-y-2 items-center justify-center p-10 h-screen pt-15">
+          className="w-screen flex-shrink-0 snap-center flex flex-col space-y-2 items-center justify-center p-5 h-screen pt-15">
             <motion.img
               initial={{
                 y: -300,
                 opacity: 0,
               }}
-              className="max-h-30 sm:max-h-45 md:max-h-50 lg:max-h-60 object-contain object-center"
+              className="space-y-6 sm:space-y-0 max-h-30 sm:max-h-45 md:max-h-50 lg:max-h-60 object-contain object-center"
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -55,7 +55,7 @@ function Projects({ projects }: Props) {
                 ))}
               </div>
 
-              <p className="text-md sm:text-xl text-center overflow-y-auto scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 max-h-55 md:max-h-65 lg:max-h-70 xl:max-h-75">
+              <p className="px-1 text-md sm:text-xl text-center overflow-y-auto scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 max-h-55 md:max-h-65 lg:max-h-70 xl:max-h-75">
                 {project?.summary}
               </p>
             </div>

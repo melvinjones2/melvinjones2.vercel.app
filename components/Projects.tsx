@@ -20,7 +20,7 @@ function Projects({ projects }: Props) {
         Projects
       </h3>
 
-      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x z-3 snap-mandatory scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80">
+      <div className="relative w-full flex overflow-x-auto overflow-y-hidden snap-x z-10 snap-mandatory scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80">
         {projects?.map((project, i) => (
           <div key={project._id} 
           className="w-screen flex-shrink-0 snap-center flex flex-col space-y-2 items-center justify-center p-10 h-screen pt-15">
@@ -29,7 +29,7 @@ function Projects({ projects }: Props) {
                 y: -300,
                 opacity: 0,
               }}
-              className="max-h-50 xs:max-h-40 sm:max-h-60 md:max-h-65 lg:max-h-70 xl:max-h-75 object-contain object-center"
+              className="max-h-30 sm:max-h-60 md:max-h-65 lg:max-h-70 xl:max-h-75 object-contain object-center"
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -38,7 +38,7 @@ function Projects({ projects }: Props) {
               
             />
             <div className="space-y-4 px-2 max-w-6xl max-w-6xl ">
-              <h4 className="text-3xl font-semibold text-center xs:text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl">
+              <h4 className="font-semibold text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl">
                 <span className="underline decoration-[#FFFF]/50">
                   Project {i + 1} of {projects.length}:
                 </span>{" "}
@@ -47,7 +47,7 @@ function Projects({ projects }: Props) {
 
               <div className="flex items-center space-x-2 justify-center">
                 {project?.technologies.map((technology: Technology) => (
-                  <img className="max-h-8  md:max-h-10 xl:max-h-12 object-contain"
+                  <img className="max-h-8 md:max-h-10 xl:max-h-12 object-contain"
                     key={technology._id}
                     src={urlFor(technology.image).url()}
                     alt=""
@@ -55,7 +55,7 @@ function Projects({ projects }: Props) {
                 ))}
               </div>
 
-              <p className="text-lg text-center max-h-55 overflow-y-scroll scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 break-words">
+              <p className="text-md sm:text-xl text-center overflow-y-scroll scrollbar-thin scrollbar-track-gray-400/0 scrollbar-thumb-[#0a2af7]/0 max-h-55 md:max-h-65 lg:max-h-70 xl:max-h-75">
                 {project?.summary}
               </p>
             </div>
@@ -63,7 +63,7 @@ function Projects({ projects }: Props) {
         ))}
       </div>
 
-      <div className="w-full absolute top-[30%] bg-[#0a2af7]/10 left-0 h-[500px] -skew-y-12" />
+      <div className="w-full absolute top-[30%] bg-[#0a2af7]/10 left-0 h-[400px] -skew-y-12" />
     </motion.div>
   );
 }

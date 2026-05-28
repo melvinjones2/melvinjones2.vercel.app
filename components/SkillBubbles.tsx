@@ -16,11 +16,11 @@ function SkillBubbles({ directionLeft, skill }: Props) {
         transition={{ duration: 0.5 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="rounded-full border-1 border-gray-500 object-cover w-16 h-16 md:w-20 md:h-20 lg:w-20 lg:h-20 xl:w-20 xl:h-20 filter group-hover:grayscale transition duration-300 ease-in-out"
+        className="rounded-full border-1 border-gray-500 object-cover w-20 h-20 md:w-20 md:h-20 lg:w-20 lg:h-20 xl:w-20 xl:h-20 filter group-hover:grayscale transition duration-300 ease-in-out"
         src={urlFor(skill?.image).url()}
         alt=""
       />
-      <div className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white h-16 w-16 md:w-20 md:h-20 lg:w-20 lg:h-20 xl:w-20 xl:h-20 rounded-full z-0">
+      <div className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white h-20 w-20 md:w-20 md:h-20 lg:w-20 lg:h-20 xl:w-20 xl:h-20 rounded-full z-0">
         <div className="flex items-center justify-center h-full">
           <p className="text-xl md:text-3xl font-bold text-black opacity-100">{skill.progress}%</p>
         </div>

@@ -29,10 +29,10 @@ export default function About({ pageInfo }: Props) {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         src={urlFor(pageInfo?.profilePic).url()}
-        className="mt-7 space-y-5 sm:mt-0 mb-0 md:mb-0 flex-shrink-0 w-40 h-40 rounded-full object-cover md:rounded-lg md:mt-0 sm:w-60 sm:h-60 md:w-64 md:h-95 xl:w-[400px] xl:h-[550px] justify-center"
+        className="space-y-5 pb-0 md:pb-0 flex-shrink-0 w-40 h-40 rounded-full object-cover md:rounded-lg md:mt-0 sm:w-60 sm:h-60 md:w-64 md:h-95 xl:w-[400px] xl:h-[550px] justify-center"
       />
 
-      <div className="space-y-2 md:space-y-3  px-5 md:px-10">
+      <div className="space-y-2 md:space-y-3 px-5 md:px-10">
         <h4 className="px-3 md:px-0 text-2xl md:text-4xl font-semibold">
             Here is a {""} 
             <span className="underline decoration-[#0a2af7]/50">little</span>{" "}
@@ -40,8 +40,8 @@ export default function About({ pageInfo }: Props) {
         </h4>
         {/* Add if long description is required...
         overflow-y-scroll scrollbar-hidden scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 */}
-        <p className="text-md px-5 md:px-0 md:text-lg lg:text-xl leading-snug text-base tracking-tight md:tracking-normal overflow-y-auto scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 max-h-55 sm:max-h-65 lg:max-h-70 xl:max-h-75">
-            {pageInfo?.backgroundInformation} 
+        <p className="text-md px-5 md:px-0 md:text-lg lg:text-xl leading-snug text-base tracking-tight md:tracking-normal overflow-y-auto scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 max-h-70 sm:max-h-65 lg:max-h-70 xl:max-h-75">
+            {pageInfo?.backgroundInformation} kjbwfe wef wefwef wef ewf ewf ewf wef wfe ewf ewf wef wfe wef wfe wef wef
         </p>
       </div>
     </motion.div>

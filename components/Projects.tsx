@@ -29,7 +29,7 @@ function Projects({ projects }: Props) {
                 y: -300,
                 opacity: 0,
               }}
-              className="pt-2 max-h-50 md:max-h-50 lg:max-h-60 object-contain object-center overflow-hidden"
+              className="pt-2 md:pt-5 max-h-50 md:max-h-50 lg:max-h-60 object-contain object-center overflow-hidden"
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -37,7 +37,7 @@ function Projects({ projects }: Props) {
               alt=""
               
             />
-            <div className="space-y-4 px-2 max-w-6xl">
+            <div className="space-y-4  max-w-6xl">
               <h4 className="font-semibold text-center text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl">
                 <span className="underline decoration-[#0a2af7]/50">
                   Project {i + 1} of {projects.length}:

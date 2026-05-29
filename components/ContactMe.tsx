@@ -24,7 +24,8 @@ function ContactMe({ pageInfo }: Props) {
   };
 
   return (
-    <div className="h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center">      <h3 className="absolute top-16 uppercase tracking-[20px] text-gray-500 text-2xl">
+    <div className="h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center">      
+    <h3 className="absolute top-16 uppercase tracking-[20px] text-gray-500 text-2xl">
       Contact
     </h3>
 
@@ -89,7 +90,7 @@ function ContactMe({ pageInfo }: Props) {
           />
           <button
             type="submit"
-            className="bg-[#0a2af7] py-3 md:py-5 px-10 rounded-lg text-black font-bold text-lg hover:bg-[#0a2af7]/80"
+            className="bg-[#0a2af7] py-3 md:py-5 px-10 rounded-lg text-black font-bold text-lg hover:bg-[#0a2af7]/80 transition duration-300"
           >
             Submit
           </button>

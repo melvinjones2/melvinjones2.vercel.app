@@ -22,20 +22,20 @@ function Projects({ projects }: Props) {
 
       <div className="relative w-full flex overflow-x-auto overflow-y-hidden snap-x z-10 snap-mandatory scrollbar scrollbar-thin scrollbar-track-gray-400/0 scrollbar-thumb-[#0a2af7]/80">
         {projects?.map((project, i) => (
-          <div key={project._id} 
-          className="w-screen flex-shrink-0 snap-center flex flex-col space-y-2 items-center justify-center p-5 h-screen">
+          <div key={project._id}
+            className="w-screen flex-shrink-0 snap-center flex flex-col space-y-2 items-center justify-center p-5 h-screen">
             <motion.img
               initial={{
-                y: -300,
+                y: -100,
                 opacity: 0,
               }}
-              className="pt-2 md:pt-5 max-h-50 md:max-h-50 lg:max-h-60 object-contain object-center overflow-hidden"
+              className="pt-4 h-38 sm:h-48 md:h-72 lg:h-80 w-auto object-contain object-center"
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               src={urlFor(project?.image).url()}
               alt=""
-              
+
             />
             <div className="space-y-4  max-w-6xl">
               <h4 className="font-semibold text-center text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl">

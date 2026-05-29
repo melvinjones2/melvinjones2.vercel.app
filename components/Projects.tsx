@@ -29,7 +29,7 @@ function Projects({ projects }: Props) {
                 y: -100,
                 opacity: 0,
               }}
-              className="pt-4 h-38 sm:h-48 md:h-72 lg:h-80 w-auto object-contain object-center"
+              className="pt-4 h-38 sm:h-48 md:h-64 lg:h-72 w-auto object-contain object-center"
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

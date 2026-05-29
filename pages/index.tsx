@@ -13,6 +13,7 @@ import { HomeIcon } from "@heroicons/react/24/outline";
 import { sanityClient } from "../sanity"; 
 import { groq } from "next-sanity";
 
+
 type Props = {
   pageInfo: PageInfo;
   experiences: Experience[];

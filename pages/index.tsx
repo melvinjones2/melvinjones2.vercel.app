@@ -30,7 +30,7 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
     overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/0 scrollbar-thumb-[#0a2af7]/80"
     >
       <Head>
-        <title>{pageInfo?.name} - Portfolio</title>
+        <title>Melvin Jones - Portfolio</title>
       </Head>
 
       {/* Header */}

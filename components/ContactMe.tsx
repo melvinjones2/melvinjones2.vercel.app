@@ -84,7 +84,7 @@ function ContactMe({ pageInfo }: Props) {
           <textarea
             {...register("message")}
             placeholder="Message"
-            className="contactInput h-24 md:h-32 resize-none"
+            className="contactInput h-24 md:h-24 resize-none"
           />
           
           <button

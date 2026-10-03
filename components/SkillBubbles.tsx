@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion';
 import { urlFor } from '@/sanity';
 import { Skill } from '@/typings';
@@ -9,23 +9,33 @@ type Props = {
 };
 
 function SkillBubbles({ directionLeft, skill }: Props) {
+  // Touch screens have no hover, so tapping toggles the proficiency overlay instead.
+  const [showProgress, setShowProgress] = useState(false);
+
   return (
-    <div className="group relative flex cursor-pointer">
+    <button
+      type="button"
+      onClick={() => setShowProgress((v) => !v)}
+      onBlur={() => setShowProgress(false)}
+      aria-label={`${skill?.title}: ${skill.progress}%`}
+      className="group relative flex cursor-pointer rounded-full"
+    >
       <motion.img
-        initial={{ x: directionLeft ? -80 : 80, opacity: 0 }}
+        // Offset must stay small: an icon pushed fully off-screen never reports as "in view" on narrow phones
+        initial={{ x: directionLeft ? -30 : 30, opacity: 0 }}
         transition={{ duration: 0.5 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="rounded-full border-2 border-gray-500 object-cover w-20 h-20 md:w-20 md:h-20 lg:w-20 lg:h-20 xl:w-20 xl:h-20 filter group-hover:grayscale transition duration-300 ease-in-out transform-gpu overflow-hidden"
+        className={`rounded-full border-2 border-gray-500 object-cover size-16 sm:size-20 filter group-hover:grayscale transition duration-300 ease-in-out transform-gpu overflow-hidden ${showProgress ? "grayscale" : ""}`}
         src={urlFor(skill?.image).url()}
         alt=""
       />
-      <div className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white w-20 h-20 md:w-20 md:h-20 lg:w-20 lg:h-20 xl:w-20 xl:h-20 rounded-full z-10">
+      <div className={`absolute inset-0 transition duration-300 ease-in-out bg-white rounded-full z-10 group-hover:opacity-80 ${showProgress ? "opacity-80" : "opacity-0"}`}>
         <div className="flex items-center justify-center h-full">
-          <p className="text-xl md:text-3xl font-bold text-black opacity-100">{skill.progress}%</p>
+          <p className="text-lg sm:text-xl md:text-3xl font-bold text-black opacity-100">{skill.progress}%</p>
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 

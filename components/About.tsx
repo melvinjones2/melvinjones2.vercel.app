@@ -12,9 +12,9 @@ export default function About({ pageInfo }: Props) {
       initial={{ opacity: 0, }}
       whileInView={{ opacity: 1, }}
       transition={{ duration: 1.5, }}
-      className="relative flex flex-col h-screen md:text-left md:flex-row max-w-7xl px-10 justify-center gap-y-6 md:gap-x-16 mx-auto items-center"
+      className="relative flex flex-col min-h-dvh md:text-left md:flex-row max-w-7xl px-6 sm:px-10 pt-32 pb-16 justify-center gap-y-6 md:gap-x-16 mx-auto items-center"
     >
-      <h3 className="absolute top-16 uppercase tracking-[20px] justify-center text-gray-500 text-2xl">
+      <h3 className="sectionTitle">
         About
       </h3>
 
@@ -29,7 +29,8 @@ export default function About({ pageInfo }: Props) {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         src={urlFor(pageInfo?.profilePic).url()}
-        className="flex-shrink-0 w-48 h-48 rounded-full object-cover sm:w-60 sm:h-60 md:w-70 md:h-90 xl:w-[400px] xl:h-[500px] md:rounded-lg"
+        alt={pageInfo?.name}
+        className="flex-shrink-0 w-40 h-40 rounded-full object-cover sm:w-60 sm:h-60 md:w-70 md:h-90 xl:w-[400px] xl:h-[500px] md:rounded-lg"
       />
 
       <div className="space-y-2 md:space-y-3 lg:px-10 text-center md:text-left">
@@ -40,7 +41,8 @@ export default function About({ pageInfo }: Props) {
         </h4>
         {/* Add if long description is required...
         overflow-y-scroll scrollbar-hidden scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 */}
-        <p className="text-md md:text-lg lg:text-xl leading-snug text-base tracking-tight md:tracking-normal overflow-y-auto scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 max-h-70 sm:max-h-65 lg:max-h-70 xl:max-h-75">
+        {/* Phones let the text flow and the section grow; a nested scroll box inside the page scroll is hard to use by touch */}
+        <p className="text-base md:text-lg lg:text-xl leading-snug md:overflow-y-auto scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 md:max-h-[min(18rem,50dvh)] xl:max-h-[min(19rem,55dvh)]">
           {pageInfo?.backgroundInformation}
         </p>
       </div>

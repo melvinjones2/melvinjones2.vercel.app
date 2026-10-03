@@ -18,19 +18,23 @@ function ContactMe({ pageInfo }: Props) {
   const { register, handleSubmit } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (formData) => {
-    window.location.href = `mailto:melvindjones400@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}. ${formData.message} (${formData.email})`;
+    const subject = encodeURIComponent(formData.subject);
+    const body = encodeURIComponent(
+      `Hi, my name is ${formData.name}. ${formData.message} (${formData.email})`
+    );
+    window.location.href = `mailto:melvindjones400@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (
     // 1. Changed h-screen to min-h-screen and added padding (pt-24 pb-10) 
     // This allows the page to scroll safely if the user's screen is very small.
-    <div className="min-h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-6 md:px-10 justify-evenly mx-auto items-center pt-24 pb-10">      
-      <h3 className="absolute top-16 uppercase tracking-[20px] text-gray-500 text-2xl">
+    <div className="min-h-dvh flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-4 sm:px-6 md:px-10 justify-evenly mx-auto items-center pt-28 pb-20">
+      <h3 className="sectionTitle">
         Contact
       </h3>
 
       {/* 2. Increased vertical layout spacing from space-y-2 to space-y-4 */}
-      <div className="flex flex-col space-y-4 md:space-y-6 2xl:space-y-7 w-fit max-w-4xl">
+      <div className="flex flex-col space-y-4 md:space-y-6 2xl:space-y-7 w-full md:w-fit max-w-4xl">
         {/* 3. Scaled down the mobile text size from text-3xl to text-xl */}
         <h4 className="text-xl md:text-4xl lg:text-5xl font-semibold text-center">
           I've got what you need.{" "}

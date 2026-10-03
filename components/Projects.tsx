@@ -14,48 +14,48 @@ function Projects({ projects }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0">
+      className="h-dvh relative flex overflow-hidden flex-col text-left w-full items-center z-0">
 
-      <h3 className="absolute top-16 uppercase tracking-[20px] text-gray-500 text-2xl">
+      <h3 className="sectionTitle">
         Projects
       </h3>
 
-      <div className="relative w-full flex overflow-x-auto overflow-y-hidden snap-x z-10 snap-mandatory scrollbar scrollbar-thin scrollbar-track-gray-400/0 scrollbar-thumb-[#0a2af7]/80">
+      {/* Slides must be w-full, not w-screen: 100vw includes the scrollbar width on Windows/Linux */}
+      <div className="relative w-full h-full flex overflow-x-auto overflow-y-hidden snap-x z-10 snap-mandatory scrollbar-thin scrollbar-track-gray-400/0 scrollbar-thumb-[#0a2af7]/80">
         {projects?.map((project, i) => (
           <div key={project._id}
-            className="w-screen flex-shrink-0 snap-center flex flex-col space-y-2 items-center justify-center p-5 h-screen">
+            className="w-full h-full flex-shrink-0 snap-center flex flex-col gap-4 items-center justify-center px-5 pt-28 pb-16">
             <motion.img
               initial={{
                 y: -100,
                 opacity: 0,
               }}
-              className="pt-4 h-38 sm:h-48 md:h-60 lg:h-64 w-auto object-contain object-center"
+              className="shrink-0 h-[min(9.5rem,22dvh)] sm:h-[min(12rem,25dvh)] md:h-[min(15rem,30dvh)] lg:h-[min(16rem,30dvh)] w-auto max-w-full object-contain object-center"
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               src={urlFor(project?.image).url()}
-              alt=""
-
+              alt={project?.title}
             />
-            <div className="space-y-4  max-w-6xl">
-              <h4 className="font-semibold text-center text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl">
+            <div className="min-h-0 flex flex-col gap-4 max-w-6xl w-full">
+              <h4 className="shrink-0 font-semibold text-center text-xl sm:text-3xl md:text-4xl lg:text-5xl">
                 <span className="underline decoration-[#0a2af7]/50">
                   Project {i + 1} of {projects.length}:
                 </span>{" "}
                 {project?.title}
               </h4>
 
-              <div className="flex items-center space-x-2 justify-center">
+              <div className="shrink-0 flex flex-wrap items-center gap-2 justify-center">
                 {project?.technologies.map((technology: Technology) => (
-                  <img className="max-h-8 md:max-h-10 xl:max-h-12 object-contain"
+                  <img className="h-8 md:h-10 xl:h-12 w-auto object-contain"
                     key={technology._id}
                     src={urlFor(technology.image).url()}
-                    alt=""
+                    alt={technology.title}
                   />
                 ))}
               </div>
 
-              <p className="px-1 text-md sm:text-xl text-center overflow-y-auto scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 max-h-55 md:max-h-65 lg:max-h-70 xl:max-h-75">
+              <p className="min-h-0 px-1 text-base sm:text-xl text-center overflow-y-auto scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#0a2af7]/80 max-h-75">
                 {project?.summary}
               </p>
             </div>

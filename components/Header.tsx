@@ -2,7 +2,6 @@ import React from "react";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 import { Social } from "@/typings";
-import social from "@/sanity/schemaTypes/social";
 
 type Props = {
   socials: Social[]
@@ -10,7 +9,7 @@ type Props = {
 
 export default function Header({ socials }: Props) {
   return (
-    <header className="sticky top-0 p-2 sm:p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
+    <header className="sticky top-0 pt-[max(0.5rem,env(safe-area-inset-top))] px-2 pb-2 sm:p-5 flex items-center justify-between max-w-7xl mx-auto z-20">
       <motion.div
         initial={{
           x: -500,
@@ -25,21 +24,24 @@ export default function Header({ socials }: Props) {
         transition={{
           duration: 1.5,
         }}
-        className="flex flex-row items-center"
+        className="flex flex-row flex-wrap items-center"
       >
         {/* Social Icons */}
         {socials.map((social) => (
         <SocialIcon
           key={social._id}
           url={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="size-10! sm:size-12!"
           fgColor="gray"
           bgColor="transparent"
         />
         ))}
       </motion.div>
 
-      <motion.div
-        onClick={() => (window.location.href = "#contact")}
+      <motion.a
+        href="#contact"
         initial={{
           x: 500,
           opacity: 0,
@@ -53,18 +55,19 @@ export default function Header({ socials }: Props) {
         transition={{
           duration: 1.5,
         }}
-        className="flex flex-row items-center text-gray-300 cursor-pointer"
+        className="flex flex-row shrink-0 items-center text-gray-300 cursor-pointer"
       >
         <SocialIcon
-          className="cursor-pointer"
+          as="span"
+          className="size-10! sm:size-12!"
           network="email"
           fgColor="gray"
           bgColor="transparent"
         />
-        <p className="uppercase md:incline-flex text-sm text-gray-400">
+        <p className="uppercase hidden md:inline-flex text-sm text-gray-400">
           Get in Touch
         </p>
-      </motion.div>
+      </motion.a>
     </header>
   );
 }

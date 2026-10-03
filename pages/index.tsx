@@ -10,7 +10,7 @@ import Projects from "@/components/Projects";
 import ContactMe from "@/components/ContactMe";
 import { Experience, PageInfo, Project, Skill, Social } from "../typings";
 import { HomeIcon } from "@heroicons/react/24/outline";
-import { sanityClient } from "../sanity"; 
+import { sanityClient } from "../sanity";
 import { groq } from "next-sanity";
 
 
@@ -26,8 +26,8 @@ type Props = {
 const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
   return (
     <div
-      className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory 
-    overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/0 scrollbar-thumb-[#0a2af7]/80"
+      className="bg-[rgb(36,36,36)] text-white h-dvh snap-y snap-proximity lg:snap-mandatory
+    overflow-y-auto overflow-x-hidden overscroll-none z-0 scrollbar-thin scrollbar-track-gray-400/0 scrollbar-thumb-[#0a2af7]/80"
     >
       <Head>
         <title>Melvin Jones - Portfolio</title>
@@ -42,14 +42,14 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
       </section>
 
       {/* About */}
-      <section id="about" className="snap-center">
+      <section id="about" className="snap-start">
         <About pageInfo={pageInfo} />
       </section>
 
       {/* Experience */}
-      {<section id="experience" className="snap-center">
+      <section id="experience" className="snap-start">
         <WorkExperience experiences={experiences} />
-      </section>}
+      </section>
 
       {/* Skills */}
       <section id="skills" className="snap-start">
@@ -66,16 +66,10 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
         <ContactMe pageInfo={pageInfo} />
       </section>
 
-      <footer className="sticky bottom-3 w-full">
-        <div className="flex items-center justify-center">
-          <Link href="#hero">
-            <footer className="sticky bottom-5 w-full cursor-pointer">
-              <div className="flex items-center justify-center">
-              <HomeIcon className="h-10 w-10 pb-0.2 hover:grayscale-100 text-white" />
-              </div>
-            </footer>
-          </Link>
-        </div>
+      <footer className="sticky bottom-[max(0.75rem,env(safe-area-inset-bottom))] w-full flex justify-center pointer-events-none">
+        <Link href="#hero" aria-label="Back to top" className="pointer-events-auto p-1.5 rounded-full bg-[rgb(36,36,36)]/70 backdrop-blur-sm">
+          <HomeIcon className="h-10 w-10 text-white transition-colors hover:text-[#0a2af7]" />
+        </Link>
       </footer>
     </div>
   );
@@ -88,7 +82,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const pageInfo: PageInfo = await sanityClient.fetch(groq`*[_type == "pageInfo"][0]`);
   const skills: Skill[] = await sanityClient.fetch(groq`*[_type == "skill"]`);
   const socials: Social[] = await sanityClient.fetch(groq`*[_type == "social"]`);
-  
+
   // Expanded queries: Notice the { ..., technologies[]-> } 
   // This pulls the actual image data for the nested arrays so the UI doesn't crash!
   const experiences: Experience[] = await sanityClient.fetch(
@@ -97,14 +91,14 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       technologies[]->
     }`
   );
-  
+
   const projects: Project[] = await sanityClient.fetch(
     groq`*[_type == "project"] {
       ...,
       technologies[]->
     }`
   );
-    
+
   return {
     props: {
       pageInfo,

@@ -1,13 +1,45 @@
 @import "tailwindcss";
 @plugin "tailwind-scrollbar";
 
-/* Keep your custom @layer components below this */
+/* Only true mouse/trackpad devices. Touch screens never "hover", so styles that
+   depend on hover (dimmed cards, hover-to-reveal) must be gated behind this. */
+@custom-variant can-hover (@media (hover: hover) and (pointer: fine));
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+    background-color: rgb(36, 36, 36);
+    color-scheme: dark;
+    overscroll-behavior: none;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* iOS < 15.4 and Chromium < 108 don't know dvh units */
+@supports not (height: 100dvh) {
+  .h-dvh {
+    height: 100vh;
+  }
+  .min-h-dvh {
+    min-height: 100vh;
+  }
+}
+
 @layer components {
   .heroButton {
     @apply px-3 md:px-6 py-2 border border-[#242424] rounded-full text-xs tracking-widest text-gray-500 transition-all hover:border-[#33FFFF]/40 hover:text-[#33FFFF]/40 cursor-pointer;
   }
 
   .contactInput {
-    @apply outline-none bg-slate-400/20 rounded-lg border-b-2 px-6 py-3 md:py-4 border-[#242424] text-gray-500 placeholder-gray-500 transition-all focus:border-[#33FFFF]/40 focus:text-[#33FFFF]/40 hover:border-[#33FFFF]/40;
+    @apply outline-none bg-slate-400/20 rounded-lg border-b-2 px-6 py-3 md:py-4 border-[#242424] text-base text-gray-500 placeholder-gray-500 transition-all focus:border-[#33FFFF]/40 focus:text-[#33FFFF]/40 hover:border-[#33FFFF]/40;
+  }
+
+  /* Letter-spacing adds trailing space after the last letter, which pushes
+     centered text off-center; the matching left padding cancels it out. */
+  .sectionTitle {
+    @apply absolute inset-x-0 top-16 text-center uppercase text-gray-500 text-xl sm:text-2xl tracking-[10px] pl-[10px] sm:tracking-[20px] sm:pl-[20px];
   }
 }

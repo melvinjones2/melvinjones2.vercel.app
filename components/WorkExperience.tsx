@@ -7,7 +7,22 @@ type Props = {
   experiences: Experience[];
 };
 
+const toTime = (date?: string) => (date ? new Date(date).getTime() : 0);
+
+const sortMostRecentFirst = (a: Experience, b: Experience) => {
+  const aCurrent = a.isCurrentlyWorkingHere || !a.dateEnded;
+  const bCurrent = b.isCurrentlyWorkingHere || !b.dateEnded;
+  if (aCurrent !== bCurrent) return aCurrent ? -1 : 1;
+
+  return (
+    toTime(b.dateEnded) - toTime(a.dateEnded) ||
+    toTime(b.dateStarted) - toTime(a.dateStarted)
+  );
+};
+
 function WorkExperience({ experiences }: Props) {
+  const sortedExperiences = [...experiences].sort(sortMostRecentFirst);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -21,9 +36,9 @@ function WorkExperience({ experiences }: Props) {
 
       {/* experience cards */}
       <div className="w-full max-h-full min-h-0 flex items-stretch gap-6 sm:gap-10 px-4 sm:px-10 py-4 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-thin scrollbar-track-gray-400/0 scrollbar-thumb-[#0a2af7]/80">
-      {experiences.map((experience) => (
-        <ExperienceCard key={experience._id} experience={experience} />
-      ))}
+        {sortedExperiences.map((experience) => (
+          <ExperienceCard key={experience._id} experience={experience} />
+        ))}
       </div>
     </motion.div>
   );

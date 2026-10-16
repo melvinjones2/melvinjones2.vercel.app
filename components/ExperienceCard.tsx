@@ -7,8 +7,6 @@ type Props = {
   experience: Experience;
 };
 
-// Sanity stores plain dates ("2024-01-01"), which JS parses as UTC midnight;
-// formatting in UTC keeps visitors west of GMT from seeing the previous day.
 const formatDate = (date: string) =>
   new Date(date).toLocaleDateString("en-US", {
     month: "short",
@@ -28,7 +26,7 @@ export default function ExperienceCard({ experience }: Props) {
         transition={{ duration: 1.2 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="shrink-0 w-16 h-16 sm:w-24 sm:h-24 rounded-full xl:w-[170px] xl:h-[170px] object-contain object-center overflow-hidden"
+        className="shrink-0 w-16 h-16 sm:w-24 sm:h-24 l:w-[120px] l:h-[120px] xl:w-[150px] xl:h-[150px] object-contain object-center overflow-hidden"
         src={urlFor(experience?.companyImage).url()}
         alt={experience?.company}
       />
